@@ -49,6 +49,8 @@ public class GameService {
             existingGame.setName(game.getName());
             existingGame.setDescription(game.getDescription());
             existingGame.setRules(game.getRules());
+            existingGame.setMaxPlayers(game.getMaxPlayers());
+            existingGame.setSlotDuration(game.getSlotDuration());
 
             repo.save(existingGame);
         }
