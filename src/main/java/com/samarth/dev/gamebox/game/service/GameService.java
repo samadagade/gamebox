@@ -40,4 +40,29 @@ public class GameService {
             System.out.print(e.getStackTrace());
         }
     }
+
+    public void updateGame(Game game, Long id) {
+        try{
+            Game existingGame = repo.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Game not found"));
+
+            existingGame.setName(game.getName());
+            existingGame.setDescription(game.getDescription());
+            existingGame.setRules(game.getRules());
+
+            repo.save(existingGame);
+        }
+        catch(Exception e){
+            System.out.print(e.getStackTrace());
+        }
+    }
+
+    public void deleteGame(Long id) {
+        try{
+            repo.deleteById(id);
+        }
+        catch(Exception e){
+            System.out.print(e.getStackTrace());
+        }
+    }
 }
